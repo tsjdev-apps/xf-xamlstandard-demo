@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamlStandardDemo.Views.MainView"
+             xmlns:alias="clr-namespace:Xamarin.Forms.Alias;assembly=Xamarin.Forms.Alias"
+             Padding="20">
+
+    <ContentPage.Content>
+        <alias:StackPanel>
+
+            <!-- Title -->
+            <alias:TextBlock Text="XAML Standard Demo"
+                             Foreground="DarkGray"
+                             HorizontalTextAlignment="Center"
+                             FontSize="22" />
+
+            <!-- Button -->
+            <alias:Button Command="{Binding GetUserCommand}"
+                          Text="Get User" />
+
+            <!-- Indicator -->
+            <alias:ProgressRing IsVisible="{Binding IsLoading}"
+                                IsActive="{Binding IsLoading}"
+                                HeightRequest="50"
+                                WidthRequest="50"/>
+
+            <!-- List -->
+            <ListView ItemsSource="{Binding Users}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <alias:StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding PictureInfo.Large}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="75"
+                                       WidthRequest="75" />
+                                <alias:TextBlock Text="{Binding Name.First}"
+                                                 Foreground="Red" 
+                                                 VerticalTextAlignment="Center"/>
+                                <alias:TextBlock Text="{Binding Name.Last}"
+                                                 Foreground="Blue" 
+                                                 VerticalTextAlignment="Center"/>
+                            </alias:StackPanel>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </alias:StackPanel>
+    </ContentPage.Content>
+
+</ContentPage>
